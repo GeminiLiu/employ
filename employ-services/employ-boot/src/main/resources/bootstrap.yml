@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: employ-biz          ##这个名称需要修改
+    name: employ-biz
   profiles:
     active: dev
   cloud:
