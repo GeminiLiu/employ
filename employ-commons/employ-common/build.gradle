@@ -1,10 +1,8 @@
 dependencies {
-    implementation('com.alibaba:easyexcel:1.1.1')// excel poi
-    implementation('org.springframework.boot:spring-boot-starter-freemarker')// freemarker
-    implementation('org.apache.cxf:cxf-spring-boot-starter-jaxws:3.3.1')// webservice cxf
     implementation('commons-net:commons-net:3.6')// ftp
     implementation('com.jcraft:jsch:0.1.55')// sftp
     implementation('com.thoughtworks.xstream:xstream:1.4.11.1')// xml
+    implementation('org.apache.commons:commons-compress:1.19')// zip
 
     compileOnly rootProject.ext.springCloudJars
     compileOnly rootProject.ext.springBootJars
