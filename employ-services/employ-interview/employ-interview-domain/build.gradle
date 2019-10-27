@@ -1,0 +1,4 @@
+apply from: '../../common.gradle'
+dependencies {
+    implementation project(':employ-services:employ-interview:employ-interview-infra')
+}

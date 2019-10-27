@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        namespace: 24f9b4e2-cff2-4345-b26d-9a2f9cb68a6d

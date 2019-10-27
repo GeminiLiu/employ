@@ -1,0 +1,20 @@
+server:
+  port: 9095
+
+spring:
+  application:
+    name: employ-auth
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 39.107.95.168:8848
+        group: biz
+        file-extension: yml
+        ext-config:
+          - data-id: ds.yml
+            group: DEFAULT_GROUP
+            refresh: true
+        shared-dataids: common.yml,discovery.yml,jpa.yml,log.yml
+        refreshable-dataids: common.yml,discovery.yml,jpa.yml,log.yml

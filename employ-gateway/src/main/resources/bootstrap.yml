@@ -1,0 +1,18 @@
+server:
+  port: 9090
+  tomcat:
+    basedir: /employ/home/ms-tmp
+
+spring:
+  application:
+    name: employ-gateway
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 39.107.95.168:8848
+        group: biz
+        file-extension: yml
+        shared-dataids: common.yml,discovery.yml,logging.yml
+        refreshable-dataids: common.yml,discovery.yml,logging.yml

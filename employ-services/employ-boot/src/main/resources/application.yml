@@ -1,0 +1,20 @@
+##这里可以在开发过程中临时增加配置，最终配置要读取配置中心##
+
+#spring:
+#  jpa:
+#    hibernate:
+#      ddl-auto: update  #第一次创建表时打开此注释
+
+employ:
+  test: 123
+  #开启xss过滤
+  filter:
+    css: true
+  #缓存配置
+  cache:
+    caffeine:
+      - name: hello
+        refreshAfterWrite: 5
+        maximumSize: 100
+      - name: test
+        expireAfterWrite: 200

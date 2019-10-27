@@ -1,0 +1,6 @@
+dependencies {
+    implementation rootProject.ext.springCloudJars
+    implementation rootProject.ext.springBootJars
+    implementation rootProject.ext.thirdCommonJars
+    implementation project(':employ-commons:employ-common')
+}

@@ -1,0 +1,53 @@
+//if ( !JavaVersion.current().java8Compatible ) {
+//    throw new GradleException( "Gradle must be run with Java 8" )
+//}
+rootProject.name = 'employ'
+include ':employ-auth'
+include ':employ-gateway'
+include ':employ-commons:employ-common'
+include ':employ-services:employ-boot'
+
+//include ':employ-services:service-sample:service-sample-ui'
+//include ':employ-services:service-sample:service-sample-application'
+//include ':employ-services:service-sample:service-sample-domain'
+//include ':employ-services:service-sample:service-sample-infra'
+
+include ':employ-services:employ-enterprise:employ-enterprise-ui'
+include ':employ-services:employ-enterprise:employ-enterprise-application'
+include ':employ-services:employ-enterprise:employ-enterprise-domain'
+include ':employ-services:employ-enterprise:employ-enterprise-infra'
+
+include ':employ-services:employ-student:employ-student-ui'
+include ':employ-services:employ-student:employ-student-application'
+include ':employ-services:employ-student:employ-student-domain'
+include ':employ-services:employ-student:employ-student-infra'
+
+include ':employ-services:employ-interview:employ-interview-ui'
+include ':employ-services:employ-interview:employ-interview-application'
+include ':employ-services:employ-interview:employ-interview-domain'
+include ':employ-services:employ-interview:employ-interview-infra'
+
+
+
+/**
+ * 递归检查build.gradle文件是否根据模块名生成
+ * @param dirs
+ * @return
+ */
+//def assertProjectBuildFile(Set<ProjectDescriptor> dirs){
+//    if(dirs.size()>0){
+//        dirs.each { project ->
+//            project.buildFileName = "${project.name}.gradle"
+//            assert project.projectDir.isDirectory()
+//            assert project.buildFile.exists()
+//            assert project.buildFile.isFile()
+//        }
+//        if(dirs.children.size()>0){
+//            dirs.children.each {project->
+//                assertProjectBuildFile(project)
+//            }
+//        }
+//    }
+//}
+//
+//assertProjectBuildFile(rootProject.children)

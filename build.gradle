@@ -1,0 +1,73 @@
+buildscript {
+	apply from: "${rootDir}/dependency.gradle"
+	repositories {
+		maven { url project.MAVEN_ALIYUN_REPO }
+		maven { url "https://repo.spring.io/milestone" }
+		jcenter()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+configure(allprojects) { project ->
+	group = 'com.jagt'
+	version = '1.0.0'
+
+	apply from: "${rootDir}/dependency.gradle"
+
+//	apply plugin: 'maven'
+
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+			mavenBom "org.springframework.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+		}
+	}
+
+//	ext.gradleScriptDir = "${rootProject.projectDir}/gradle"
+//	apply from: "${gradleScriptDir}/task.gradle"
+}
+def holderProjects = Arrays.asList('employ-services', 'service-sample')
+
+configure(subprojects) { subproject ->
+	if (!holderProjects.contains(subproject.name)) {
+		apply plugin: 'java-library'
+		apply plugin: 'idea'
+
+		//版本号，可修改
+		version = '1.0.0'
+		group = project.GROUP
+		sourceCompatibility = 1.8
+		targetCompatibility = 1.8
+
+		[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+		apply from: "${rootDir}/dependency.gradle"
+
+		repositories {
+			maven { url project.MAVEN_ALIYUN_REPO }
+			maven { url "https://repo.spring.io/milestone" }
+			jcenter()
+		}
+
+		dependencies {
+			annotationProcessor rootProject.ext.lombokJar
+			compileOnly rootProject.ext.lombokJar
+			annotationProcessor rootProject.ext.lombokJar
+			testCompileOnly rootProject.ext.lombokJar
+			testImplementation('org.springframework.boot:spring-boot-starter-test')
+			implementation fileTree(dir: 'src/libs', include: ['*.jar'])
+
+			implementation 'org.jooq:jooq'
+		}
+	}
+}
+
+//以war包部署
+//apply plugin: 'war'
+//dependencies {
+//	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+//}
