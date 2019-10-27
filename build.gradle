@@ -11,13 +11,9 @@ buildscript {
 }
 
 configure(allprojects) { project ->
-	group = 'com.jagt'
-	version = '1.0.0'
 
 	apply from: "${rootDir}/dependency.gradle"
-
-//	apply plugin: 'maven'
-
+	apply plugin: 'maven'
 	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
 	dependencyManagement {
@@ -30,15 +26,14 @@ configure(allprojects) { project ->
 //	ext.gradleScriptDir = "${rootProject.projectDir}/gradle"
 //	apply from: "${gradleScriptDir}/task.gradle"
 }
-def holderProjects = Arrays.asList('employ-services', 'service-sample')
+def holderProjects = Arrays.asList('employ-services', 'employ-commons')
 
 configure(subprojects) { subproject ->
 	if (!holderProjects.contains(subproject.name)) {
 		apply plugin: 'java-library'
 		apply plugin: 'idea'
 
-		//版本号，可修改
-		version = '1.0.0'
+		version = project.VERSION
 		group = project.GROUP
 		sourceCompatibility = 1.8
 		targetCompatibility = 1.8
@@ -60,8 +55,6 @@ configure(subprojects) { subproject ->
 			testCompileOnly rootProject.ext.lombokJar
 			testImplementation('org.springframework.boot:spring-boot-starter-test')
 			implementation fileTree(dir: 'src/libs', include: ['*.jar'])
-
-			implementation 'org.jooq:jooq'
 		}
 	}
 }

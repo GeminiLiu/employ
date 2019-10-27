@@ -4,13 +4,17 @@
     后端：jdk8+springboot
     缓存：caffeine
     模板：freemarker
+    连接池：hikari
     解析excel：easyexcel
     解析JSON：jackson
-    解析XML：dom4j+XStream
-    分层采用ddd+cqrs模式，领域模型采用贫血模型（非失血模型）
+    解析XML：XStream+dom4j
+    构建：gradle
+    
+    对于services下的业务服务：
+    领域模型采用贫血模型（非失血模型）
+    分层采用ddd+cqrs模式
     读操作：jooq
     写操作：jpa
-    构建：gradle
     
     ......
 ---------------------------
