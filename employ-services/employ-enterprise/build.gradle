@@ -1,0 +1,5 @@
+apply from: '../common.gradle'
+dependencies {
+    //implementation project(':employ-services:employ-enterprise:employ-enterprise-domain')
+//    implementation('org.springframework.boot:spring-boot-starter-security')
+} 

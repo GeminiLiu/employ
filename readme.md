@@ -61,15 +61,14 @@
 - IDEA`lombok插件` 并设置Setting - Build - Compiler - AnnotationProcessors - 开启右侧勾选
 
 ## 运行步骤: 
-- 1, 以gradle方式导入工程
-- 2, 刷新gradle，自动下载jar包
-- 3，配置都已设置好，直接在对应模块下开发
-```
+- 1、以gradle方式导入工程
+- 2、刷新gradle，自动下载jar包
+- 3、配置都已设置好，直接在对应模块下开发
 
 ## 版本说明
 
-## Version: 1.0.0
+### Version: 1.0.0
     Date: 20191027
     Modify By:  gotanks
-#### Desc:  
+### Desc:  
     1、初始化工程
