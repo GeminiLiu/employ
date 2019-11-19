@@ -4,6 +4,7 @@ import com.jagt.employ.common.command.Command;
 import com.jagt.employ.common.command.Executor;
 import com.jagt.employ.common.command.Receiver;
 import com.jagt.employ.enterprise.infra.command.DomainService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class CommandExecutor implements Executor {
 
     @Override
     public <R extends Receiver> R getReceiver(Class<R> clazz){
-        return (R) domainServices.get(clazz.getName());
+        return (R) domainServices.get(StringUtils.uncapitalize(clazz.getSimpleName()));
     }
 
     @Override
