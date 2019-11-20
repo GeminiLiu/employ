@@ -36,23 +36,53 @@
 │  │  
 │  ├─employ-services----------------------------业务服务层
 │  |  ├─employ-boot-----------------------------微服务启动核心模块
+│  |  ├─employ-college--------------------------院校服务
 │  |  ├─employ-enterprise-----------------------企业服务
-│  |  |  ├─employ-enterprise-application--------企业服务应用层模块
-│  |  |  ├─employ-enterprise-domain-------------企业服务领域层模块
-│  |  |  ├─employ-enterprise-infra--------------企业服务基础设施模块
-│  |  |  ├─employ-enterprise-ui-----------------企业服务展示层模块
 │  |  ├─employ-interview------------------------面试服务
-│  |  |  ├─employ-interview-application---------面试服务应用层模块
-│  |  |  ├─employ-interview-domain--------------面试服务领域层模块
-│  |  |  ├─employ-interview-infra---------------面试服务基础设施模块
-│  |  |  ├─employ-interview-ui------------------面试服务展示层模块
 │  |  ├─employ-student--------------------------学生服务
-│  |  |  ├─employ-student-application-----------学生服务应用层模块
-│  |  |  ├─employ-student-domain----------------学生服务领域层模块
-│  |  |  ├─employ-student-infra-----------------学生服务基础设施模块
-│  |  |  ├─employ-student-ui--------------------学生服务展示层模块
+│  |  ├─employ-recruitment----------------------招聘会服务
+│  |  ├─employ-user-----------------------------用户服务
+│  |  ├─employ-video----------------------------视频服务
 │  │
 │  │-...
+```
+
+## 分层说明:
+
+```
+├───────
+│  │  
+│  ├─ui-----------------------------展示层：最外层，供外界用户访问或接口调用，调用app层
+│  |  ├─api---------------------------对外接口（XxxApi, @RestController）
+│  |  ├─controller--------------------页面跳转（XxxController, @RestController）
+│  │  
+│  ├─app----------------------------应用层：调度命令，组装对象，调用domain层（写入）或query层（读取）
+│  |  ├─service-----------------------应用服务层（XxxService）
+│  |  ├──impl---------------------------应用服务实现类（XxxServiceImpl, extends ServiceImpl）
+│  |  ├─cmd---------------------------写入命令（XxxCmd, implements Command<>）
+│  |  ├─qry---------------------------查询命令（XxxQry, implements Command<>）
+│  |  ├─dto---------------------------数据传输对象（XxxDTO）
+│  |  ├─assembler---------------------组装器（XxxAssembler）
+│  │  
+│  ├─domain-------------------------领域层：读写分离-写入，执行增删改操作，通过jpa操作领域对象
+│  |  ├─service-----------------------领域服务层（XxxDomainService, extends DomainServiceImpl）
+│  |  ├─repository--------------------数据仓库（XxxRepository）
+│  |  ├─entity------------------------实体（XxxE, extends BaseEntity）
+│  |  ├─vo----------------------------值对象（XxxV）
+│  |  ├─event-------------------------领域事件（XxxEvent）
+│  │  
+│  ├─query--------------------------查询层：读写分离-读取，执行查询操作，通过jooq查询
+│  |  ├─service-----------------------查询服务层（XxxQueryService, extends QueryServiceImpl）
+│  |  ├─model-------------------------查询对象（XxxM）
+│  |
+│  ├─infra--------------------------基础设施层：通用的工具类，供其他各层调用
+│  |  ├─command-----------------------命令模式公共接口类
+│  |  ├─config------------------------springboot配置类
+│  |  ├─constants---------------------常量类
+│  |  ├─enums-------------------------枚举类
+│  |  ├─util--------------------------工具类
+│  |  ├─......
+│  │
 ```
 
 ## 环境须知：
