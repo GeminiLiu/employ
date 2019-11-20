@@ -97,8 +97,15 @@
 
 ## 版本说明
 
+### Version: 1.1.0
+    Date: 20191120
+    Modify By: gotanks 
+    Desc:
+    1、更改目录结构
+    2、更新部分jar包版本
+
 ### Version: 1.0.0
     Date: 20191027
-    Modify By:  gotanks
-### Desc:  
+    Modify By: gotanks 
+    Desc:
     1、初始化工程
