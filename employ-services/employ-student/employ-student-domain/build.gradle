@@ -1,4 +1,0 @@
-apply from: '../../common.gradle'
-dependencies {
-    implementation project(':employ-services:employ-student:employ-student-infra')
-}

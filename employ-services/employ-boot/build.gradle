@@ -1,6 +1,10 @@
 apply from: '../common.gradle'
 dependencies {
-//    implementation project(':employ-services:employ-interview:employ-interview-ui')
     implementation project(':employ-services:employ-enterprise')
-//    implementation project(':employ-services:employ-student:employ-student-ui')
+    implementation project(':employ-services:employ-college')
+    implementation project(':employ-services:employ-student')
+    implementation project(':employ-services:employ-interview')
+    implementation project(':employ-services:employ-recruitment')
+    implementation project(':employ-services:employ-user')
+    implementation project(':employ-services:employ-video')
 }

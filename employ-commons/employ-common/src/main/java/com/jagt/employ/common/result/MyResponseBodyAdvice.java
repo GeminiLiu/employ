@@ -1,8 +1,6 @@
 package com.jagt.employ.common.result;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jagt.employ.common.annotation.ApiResult;
-import com.jagt.employ.common.exception.BusinessException;
 import com.jagt.employ.common.tools.Jackson_;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -35,7 +33,7 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
             if(strings != null){
                 result.setCount(Integer.parseInt(strings.get(0)));
             }
-            if(body instanceof String){
+            if(body == null || body instanceof String){
                 return Jackson_.toJson(result);
             }
         } catch (Exception e){

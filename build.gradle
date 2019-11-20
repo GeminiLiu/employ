@@ -19,14 +19,14 @@ configure(allprojects) { project ->
 	dependencyManagement {
 		imports {
 			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-			mavenBom "org.springframework.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+			mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
 		}
 	}
 
 //	ext.gradleScriptDir = "${rootProject.projectDir}/gradle"
 //	apply from: "${gradleScriptDir}/task.gradle"
 }
-def holderProjects = Arrays.asList('employ-services', 'employ-commons')
+def holderProjects = Arrays.asList('employ-commons', 'employ-services')
 
 configure(subprojects) { subproject ->
 	if (!holderProjects.contains(subproject.name)) {

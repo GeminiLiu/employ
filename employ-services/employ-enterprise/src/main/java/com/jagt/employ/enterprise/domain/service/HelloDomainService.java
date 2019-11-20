@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class HelloDomainService extends DomainServiceImpl {
 
-	@Autowired
-	private HelloRepository helloRepository;
+//	@Autowired
+//	private HelloRepository helloRepository;
 
     public void setValue(String name, String value) {
 		DB.DB_MAP.put(name, value);

@@ -4,6 +4,7 @@ dependencies {
     api('com.thoughtworks.xstream:xstream:1.4.11.1')// xml
     api('org.apache.commons:commons-compress:1.19')// zip
     api('org.apache.httpcomponents:httpclient:4.5.10')// httpclient
+    api('org.apache.httpcomponents:httpmime:4.5.10')// httpmime
 
     compileOnly rootProject.ext.springCloudJars
     compileOnly rootProject.ext.springBootJars

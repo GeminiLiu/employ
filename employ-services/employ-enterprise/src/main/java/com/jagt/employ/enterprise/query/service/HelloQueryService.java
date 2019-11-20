@@ -1,7 +1,9 @@
 package com.jagt.employ.enterprise.query.service;
 
+import com.jagt.employ.common.exception.BusinessException;
 import com.jagt.employ.enterprise.infra.command.impl.QueryServiceImpl;
 import com.jagt.employ.enterprise.infra.constants.DB;
+import com.jagt.employ.enterprise.infra.enums.E;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
@@ -30,6 +32,13 @@ public class HelloQueryService extends QueryServiceImpl {
 
     @Cacheable(value = "hello", key="#p0")// sgn: 缓存，一般在领域层使用缓存，这里只是示例
     public String getValue(String name) {
-        return prefix + DB.DB_MAP.get(name);
+        log.info("前缀为：{}", prefix);
+        log.info("查询name：{}", name);
+        String value = DB.DB_MAP.get(name);
+        if(value == null){
+            throw new BusinessException(E.E001.info());
+        }
+        //返回时间戳，验证缓存，缓存5s
+        return prefix + ","+ value + ","+ System.currentTimeMillis();
     }
 }

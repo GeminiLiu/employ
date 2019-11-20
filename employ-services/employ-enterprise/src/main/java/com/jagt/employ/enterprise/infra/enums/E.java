@@ -3,7 +3,7 @@ package com.jagt.employ.enterprise.infra.enums;
 import com.jagt.employ.common.exception.ExceptionInfo;
 
 public enum E {
-	E001(1001, "用户名不存在"),
+	E001(1001, "value为空"),
 	E002(1002, "222222222222");
 	
 	private ExceptionInfo exceptionInfo;
