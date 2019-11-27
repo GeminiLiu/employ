@@ -23,6 +23,7 @@ public class HelloDTO {
 	private String value;
 
 	public static HelloDTO build(Record record){
+		//builder构造器
 		return HelloDTO.builder()
 				.name(record.get("name").toString())
 				.value(record.get("msg").toString())

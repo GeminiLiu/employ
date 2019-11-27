@@ -2,7 +2,6 @@ package com.jagt.employ.user.hello.domain.entity;
 
 import com.jagt.employ.common.entity.BaseEntity;
 import com.jagt.employ.user.hello.domain.vo.HelloV;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -25,7 +24,6 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "HELLO")
-@Builder
 //继承BaseEntity，包含主键和乐观锁，也可继承BaseTimeEntity，BaseTreeEntity
 public class HelloE extends BaseEntity{
     /**
@@ -53,5 +51,15 @@ public class HelloE extends BaseEntity{
             result.append("配置属性：").append(prop);
         }
         this.setMsg(result.toString());
+    }
+
+    /**
+     * 更新时间戳
+     */
+    public void updateTime(){
+        if(this.getHelloV() == null){
+            this.setHelloV(new HelloV());
+        }
+        this.getHelloV().setField(System.currentTimeMillis()+"");
     }
 }

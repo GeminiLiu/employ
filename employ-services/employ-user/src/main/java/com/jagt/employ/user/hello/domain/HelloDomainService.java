@@ -2,8 +2,6 @@ package com.jagt.employ.user.hello.domain;
 
 import com.jagt.employ.common.cqrs.impl.DomainServiceImpl;
 import com.jagt.employ.user.hello.domain.entity.HelloE;
-import com.jagt.employ.user.hello.domain.vo.HelloV;
-import com.jagt.employ.user.infra.constants.DB;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -29,15 +27,21 @@ public class HelloDomainService extends DomainServiceImpl {
 	private HelloRepository helloRepository;
 
     public void setValue(String name, String value) {
-        //采用build模式构建实体类
-        HelloE hello = HelloE.builder()
-                .name(name)
-                .msg(value)
-                .helloV(new HelloV(System.currentTimeMillis() + ""))
-                .build();
-        //缓存模拟数据库操作
-        DB.DB_MAP.put(name, value);
+        HelloE helloE = helloRepository.findByName(name)
+                .orElseGet(()->{
+                    HelloE h = new HelloE();
+                    h.setName(name);
+                    return h;
+                });
+
+        helloE.setMsg(value);
+        //调用实体类内方法(充血模型)
+        helloE.updateTime();
+
+//        //缓存模拟数据库操作
+//        DB.DB_MAP.put(name, value);
+
         //真实数据库操作
-        helloRepository.save(hello);
+        helloRepository.save(helloE);
     }
 }

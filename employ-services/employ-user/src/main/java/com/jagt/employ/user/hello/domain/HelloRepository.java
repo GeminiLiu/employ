@@ -4,6 +4,7 @@ import com.jagt.employ.user.hello.domain.entity.HelloE;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 /**
  * Repository 仓库
@@ -15,5 +16,7 @@ import java.io.Serializable;
  *
  */
 public interface HelloRepository extends JpaRepository<HelloE, Serializable> {
+
+    Optional<HelloE> findByName(String name);
 
 }
