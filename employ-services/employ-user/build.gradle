@@ -1,3 +1,17 @@
 apply from: '../common.gradle'
+apply from: "../jooq.gradle"
 dependencies {
+
+}
+jooq {
+    employ(sourceSets.main) {
+        generator {
+            database {
+                includes = 'HELLO|U_\\w+'
+            }
+            target {
+                packageName = 'com.jagt.employ.user.infra.model'
+            }
+        }
+    }
 }

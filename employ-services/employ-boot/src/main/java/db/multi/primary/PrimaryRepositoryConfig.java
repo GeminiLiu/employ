@@ -30,7 +30,7 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef="entityManagerFactoryPrimary",
         transactionManagerRef="transactionManagerPrimary",
-        basePackages = {"com.jagt.employ.enterprise.domain.repository.ds1"}
+        basePackages = {"**.domain.**.ds1"}
 		)
 public class PrimaryRepositoryConfig {
 

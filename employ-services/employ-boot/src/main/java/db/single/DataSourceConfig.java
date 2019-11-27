@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @author gotanks
  */
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.jagt.employ.enterprise.domain.repository"})
+@EnableJpaRepositories(basePackages = {"**.domain"})
 @EntityScan(basePackages = {"**.entity"})
 public class DataSourceConfig {
 }
