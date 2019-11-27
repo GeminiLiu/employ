@@ -2,5 +2,15 @@ dependencies {
     implementation rootProject.ext.springCloudJars
     implementation rootProject.ext.springBootJars
     implementation rootProject.ext.thirdCommonJars
-    implementation project(':employ-commons:employ-common')
+    api project(':employ-commons:employ-common')
+}
+sourceSets {
+    main {
+        java {
+            srcDirs rootProject.projectDir.absolutePath+'/employ-commons/employ-common/src/main/java'
+        }
+        resources {
+            srcDirs rootProject.projectDir.absolutePath+'/employ-commons/employ-common/src/main/resources'
+        }
+    }
 }

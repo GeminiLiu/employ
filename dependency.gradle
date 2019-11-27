@@ -1,7 +1,9 @@
 ext {
+    lombokJar = 'org.projectlombok:lombok'
     springCloudJars = [
-            'org.springframework.cloud:spring-cloud-starter-alibaba-nacos-discovery',
-            'org.springframework.cloud:spring-cloud-starter-alibaba-nacos-config',
+            'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery',
+            'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config',
+            'com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel',
             //'org.springframework.cloud:spring-cloud-starter-openfeign',
             //'org.springframework.cloud:spring-cloud-starter-netflix-hystrix',
             //'org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard',
@@ -19,11 +21,7 @@ ext {
     thirdCommonJars = [
             'commons-io:commons-io:2.6',
             'org.apache.commons:commons-lang3',
-            'com.github.ben-manes.caffeine:caffeine:2.7.0',
-            'mysql:mysql-connector-java:5.1.47'
+            'com.github.ben-manes.caffeine:caffeine:2.8.0',
+            'mysql:mysql-connector-java:'+project.VERSION_MYSQL,
     ]
-    lombokJar = 'org.projectlombok:lombok'
-    springBootVersion = project.VERSION_SPRINGBOOT
-    springCloudVersion = project.VERSION_SPRINGCLOUD
-    springCloudAlibabaVersion = project.VERSION_SPRINGCLOUD_ALIBABA
 }

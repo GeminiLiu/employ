@@ -36,23 +36,51 @@
 │  │  
 │  ├─employ-services----------------------------业务服务层
 │  |  ├─employ-boot-----------------------------微服务启动核心模块
+│  |  ├─employ-college--------------------------院校服务
 │  |  ├─employ-enterprise-----------------------企业服务
-│  |  |  ├─employ-enterprise-application--------企业服务应用层模块
-│  |  |  ├─employ-enterprise-domain-------------企业服务领域层模块
-│  |  |  ├─employ-enterprise-infra--------------企业服务基础设施模块
-│  |  |  ├─employ-enterprise-ui-----------------企业服务展示层模块
 │  |  ├─employ-interview------------------------面试服务
-│  |  |  ├─employ-interview-application---------面试服务应用层模块
-│  |  |  ├─employ-interview-domain--------------面试服务领域层模块
-│  |  |  ├─employ-interview-infra---------------面试服务基础设施模块
-│  |  |  ├─employ-interview-ui------------------面试服务展示层模块
 │  |  ├─employ-student--------------------------学生服务
-│  |  |  ├─employ-student-application-----------学生服务应用层模块
-│  |  |  ├─employ-student-domain----------------学生服务领域层模块
-│  |  |  ├─employ-student-infra-----------------学生服务基础设施模块
-│  |  |  ├─employ-student-ui--------------------学生服务展示层模块
+│  |  ├─employ-recruitment----------------------招聘会服务
+│  |  ├─employ-user-----------------------------用户服务
+│  |  ├─employ-video----------------------------视频服务
 │  │
 │  │-...
+```
+
+## 分层说明:
+
+```
+├───────
+│──hello---------------------------业务包名  
+│  ├─XxxApi---------------------------对外接口, 调用应用服务层
+│  ├─XxxController--------------------页面跳转控制, 调用应用服务层
+│  ├─XxxService-------------------------应用服务接口
+│  ├─XxxServiceImpl---------------------应用服务实现类, extends ServiceImpl, 调用命令层
+│  ├─dto--------------------------------DTO包
+│  |  ├─XxxDTO----------------------------展示给前台的数据传输对象
+│  ├─command------------------------------命令包
+│  |  ├─XxxCmd------------------------------写入命令, implements Command<>, 调用领域服务
+│  |  ├─XxxQry------------------------------读取命令, implements Command<>, 调用查询服务
+│  ├─query------------------------------------查询层
+│  |  ├─XxxQueryService-------------------------查询服务, extends QueryServiceImpl
+│  ├─domain-----------------------------------领域层
+│  |  ├─XxxDomainService------------------------领域服务, extends QueryServiceImpl
+│  |  ├─XxxRepository-----------------------------实体仓库, 基于jpa
+│  |  ├─entity------------------------------------实体包
+│  |  |  ├─XxxE-------------------------------------实体, extends BaseEntity
+│  |  ├─vo----------------------------------------值对象包
+│  |  |  ├─XxxV-------------------------------------值对象（XxxV）
+│  |  ├─event-------------------------------------领域事件包
+│  │  |
+│──....... 
+│──infra  
+│  ├─config---------------------------springboot配置类
+│  ├─constants------------------------常量类
+│  ├─enums----------------------------枚举类
+│  ├─model----------------------------jooq自动生成代码
+│  ├─util-----------------------------工具类
+│  ├─......
+│  │
 ```
 
 ## 环境须知：
@@ -61,15 +89,28 @@
 - IDEA`lombok插件` 并设置Setting - Build - Compiler - AnnotationProcessors - 开启右侧勾选
 
 ## 运行步骤: 
-- 1, 以gradle方式导入工程
-- 2, 刷新gradle，自动下载jar包
-- 3，配置都已设置好，直接在对应模块下开发
-```
+- 1、以gradle方式导入工程
+- 2、刷新gradle，自动下载jar包
+- 3、配置都已设置好，直接在对应模块下开发
 
 ## 版本说明
 
-## Version: 1.0.0
+### Version: 1.2.0
+    Date: 20191127
+    Modify By: gotanks 
+    Desc:
+    1、更改目录结构
+    2、增加jooq自动生成代码
+
+### Version: 1.1.0
+    Date: 20191120
+    Modify By: gotanks 
+    Desc:
+    1、更改目录结构
+    2、更新部分jar包版本
+
+### Version: 1.0.0
     Date: 20191027
-    Modify By:  gotanks
-#### Desc:  
+    Modify By: gotanks 
+    Desc:
     1、初始化工程

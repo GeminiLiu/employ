@@ -9,6 +9,7 @@
 /bin/
 /log/
 !gradle/wrapper/gradle-wrapper.jar
+jooq.properties
 
 ### STS ###
 #.project

@@ -6,7 +6,7 @@
 #      ddl-auto: update  #第一次创建表时打开此注释
 
 employ:
-  test: 123
+  test: EOMS
   #开启xss过滤
   filter:
     css: true

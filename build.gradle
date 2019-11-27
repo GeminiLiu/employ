@@ -1,49 +1,38 @@
-buildscript {
-	apply from: "${rootDir}/dependency.gradle"
-	repositories {
-		maven { url project.MAVEN_ALIYUN_REPO }
-		maven { url "https://repo.spring.io/milestone" }
-		jcenter()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+plugins {
+	id 'nu.studer.jooq' version '3.0.3'
+	id 'org.springframework.boot' version '2.1.10.RELEASE'
 }
 
 configure(allprojects) { project ->
-
 	apply from: "${rootDir}/dependency.gradle"
-	apply plugin: 'maven'
-	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
 	dependencyManagement {
 		imports {
-			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-			mavenBom "org.springframework.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:"+VERSION_SPRINGCLOUD
+			mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:"+VERSION_SPRINGCLOUD_ALIBABA
 		}
 	}
-
-//	ext.gradleScriptDir = "${rootProject.projectDir}/gradle"
-//	apply from: "${gradleScriptDir}/task.gradle"
 }
-def holderProjects = Arrays.asList('employ-services', 'employ-commons')
+
+def holderProjects = Arrays.asList('employ', 'employ-commons', 'employ-services')
 
 configure(subprojects) { subproject ->
 	if (!holderProjects.contains(subproject.name)) {
+		apply plugin: 'org.springframework.boot'
 		apply plugin: 'java-library'
 		apply plugin: 'idea'
+		apply plugin: 'nu.studer.jooq'
+		apply plugin: 'maven-publish'
 
-		version = project.VERSION
-		group = project.GROUP
+		version = VERSION
+		group = GROUP
 		sourceCompatibility = 1.8
 		targetCompatibility = 1.8
 
 		[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 
-		apply from: "${rootDir}/dependency.gradle"
-
 		repositories {
-			maven { url project.MAVEN_ALIYUN_REPO }
+			maven { url MAVEN_ALIYUN_REPO }
 			maven { url "https://repo.spring.io/milestone" }
 			jcenter()
 		}
@@ -55,6 +44,7 @@ configure(subprojects) { subproject ->
 			testCompileOnly rootProject.ext.lombokJar
 			testImplementation('org.springframework.boot:spring-boot-starter-test')
 			implementation fileTree(dir: 'src/libs', include: ['*.jar'])
+			jooqRuntime 'mysql:mysql-connector-java:'+VERSION_MYSQL
 		}
 	}
 }

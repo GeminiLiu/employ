@@ -37,8 +37,8 @@ public class Snowflake_ {
     private final static String DATE_PATTERN_DEFAULT = "yyyy-MM-dd HH:mm:ss SSS";
     
     // ==============================Fields===========================================
-    /** 开始时间截 (2018-06-10)，用于用当前时间戳减去这个时间戳，算出偏移量 */
-    private final long twepoch = 1528560000000L;
+    /** 开始时间截 (2018-11-19)，用于用当前时间戳减去这个时间戳，算出偏移量 */
+    private final long twepoch = 1542556800000L;
     
     /** 机器id所占的位数(表示只允许workId的范围为：0-255) */
     private final long workerIdBits = 8L;
