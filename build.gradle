@@ -8,8 +8,8 @@ configure(allprojects) { project ->
 	apply plugin: 'io.spring.dependency-management'
 	dependencyManagement {
 		imports {
-			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-			mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:"+VERSION_SPRINGCLOUD
+			mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:"+VERSION_SPRINGCLOUD_ALIBABA
 		}
 	}
 }
@@ -24,17 +24,15 @@ configure(subprojects) { subproject ->
 		apply plugin: 'nu.studer.jooq'
 		apply plugin: 'maven-publish'
 
-		apply from: "${rootDir}/dependency.gradle"
-
-		version = project.VERSION
-		group = project.GROUP
+		version = VERSION
+		group = GROUP
 		sourceCompatibility = 1.8
 		targetCompatibility = 1.8
 
 		[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 
 		repositories {
-			maven { url project.MAVEN_ALIYUN_REPO }
+			maven { url MAVEN_ALIYUN_REPO }
 			maven { url "https://repo.spring.io/milestone" }
 			jcenter()
 		}
@@ -46,7 +44,7 @@ configure(subprojects) { subproject ->
 			testCompileOnly rootProject.ext.lombokJar
 			testImplementation('org.springframework.boot:spring-boot-starter-test')
 			implementation fileTree(dir: 'src/libs', include: ['*.jar'])
-			jooqRuntime 'mysql:mysql-connector-java:'+project.VERSION_MYSQL
+			jooqRuntime 'mysql:mysql-connector-java:'+VERSION_MYSQL
 		}
 	}
 }

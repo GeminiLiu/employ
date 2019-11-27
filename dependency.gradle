@@ -1,8 +1,5 @@
 ext {
     lombokJar = 'org.projectlombok:lombok'
-    springBootVersion = project.VERSION_SPRINGBOOT
-    springCloudVersion = project.VERSION_SPRINGCLOUD
-    springCloudAlibabaVersion = project.VERSION_SPRINGCLOUD_ALIBABA
     springCloudJars = [
             'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery',
             'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config',

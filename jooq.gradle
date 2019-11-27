@@ -1,0 +1,38 @@
+def jooqFile = file(rootProject.projectDir.absolutePath+"/jooq.properties")
+Properties jooqProps = new Properties()
+if (jooqFile.canRead()) {
+    jooqProps.load(new FileInputStream(jooqFile))
+    jooq {
+        version = '3.11.12'
+        edition = 'OSS'
+        employ(sourceSets.main) {
+            jdbc {
+                driver = jooqProps['JDBC_DRIVER'].toString()
+                url = jooqProps['JDBC_URL'].toString()
+                user = jooqProps['JDBC_USER'].toString()
+                password = jooqProps['JDBC_PASSWORD'].toString()
+            }
+            generator {
+                name = 'org.jooq.codegen.DefaultGenerator'
+                strategy {
+                    name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+                }
+                database {
+                    name = 'org.jooq.meta.mysql.MySQLDatabase'
+                    inputSchema = 'employ-biz'
+                }
+                generate {
+                    relations = true
+                    deprecated = false
+                    records = false
+                    immutablePojos = false
+                    fluentSetters = true
+                }
+                target {
+                    directory = 'src/main/java'
+                    //packageName = 'com.jagt.employ.user.model'
+                }
+            }
+        }
+    }
+}

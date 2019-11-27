@@ -1,8 +1,9 @@
 apply from: '../common.gradle'
-apply from: "../jooq.gradle"
+apply from: "../../jooq.gradle"
 dependencies {
 
 }
+//重写jooq配置
 jooq {
     employ(sourceSets.main) {
         generator {
