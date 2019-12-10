@@ -13,7 +13,7 @@ import java.util.Map;
 @Service
 public class QueryExecutor implements Executor {
 
-    @Autowired
+    @Autowired(required = false)
     private Map<String, QueryService> queryServices;
 
     @Override

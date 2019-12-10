@@ -5,6 +5,9 @@ dependencies {
     api('org.apache.commons:commons-compress:1.19')// zip
     api('org.apache.httpcomponents:httpclient:4.5.10')// httpclient
     api('org.apache.httpcomponents:httpmime:4.5.10')// httpmime
+    api 'io.jsonwebtoken:jjwt:0.9.1'//jwt
+    api 'io.springfox:springfox-swagger2:2.2.2'//swagger
+    api 'io.springfox:springfox-swagger-ui:2.2.2'//swagger-ui
 
     compileOnly rootProject.ext.springCloudJars
     compileOnly rootProject.ext.springBootJars

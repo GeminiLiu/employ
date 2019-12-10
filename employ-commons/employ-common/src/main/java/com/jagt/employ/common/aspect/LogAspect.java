@@ -2,6 +2,7 @@ package com.jagt.employ.common.aspect;
 
 import javax.servlet.http.HttpServletRequest;
 
+import io.swagger.annotations.ApiOperation;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -11,7 +12,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.jagt.employ.common.annotation.Operation;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -37,7 +37,7 @@ public class LogAspect {
 	 * 定义请求日志切入点
 	 */
 	@Pointcut(value = "@annotation(operation)")
-	public void serviceStatistics(Operation operation) {
+	public void serviceStatistics(ApiOperation operation) {
 
 	}
 	
@@ -47,7 +47,7 @@ public class LogAspect {
 	 * @param operation
 	 */
 	@Before(value = "serviceStatistics(operation)")
-	private void doBefore(JoinPoint joinPoint, Operation operation) {
+	private void doBefore(JoinPoint joinPoint, ApiOperation operation) {
 	    START_TIME.set(System.currentTimeMillis());
 		String classPath = joinPoint.getTarget().getClass().getName();
 		String methodName = joinPoint.getSignature().getName();
@@ -67,7 +67,7 @@ public class LogAspect {
 	 * @param returnValue
 	 */
 	@AfterReturning(value = "serviceStatistics(operation)", returning = "returnValue")
-	private void doAfterReturning(Operation operation, Object returnValue) {
+	private void doAfterReturning(ApiOperation operation, Object returnValue) {
 	    long duration = System.currentTimeMillis() - START_TIME.get();
 		log.info("<<<  [{}] ({}ms) {}", 
 				operation.value(), 
@@ -81,7 +81,7 @@ public class LogAspect {
 	 * @param e
 	 */
 	@AfterThrowing(value = "serviceStatistics(operation)", throwing = "e")
-	private void doAfterThrowing(Operation operation, Throwable e) {
+	private void doAfterThrowing(ApiOperation operation, Throwable e) {
         long duration = System.currentTimeMillis() - START_TIME.get();
 		log.warn("!!!  [{}] ({}ms) {}",  
 				operation.value(), 
