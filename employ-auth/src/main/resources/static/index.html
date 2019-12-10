@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<input lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JWT测试</title>
+    <style>
+        .input_key{
+            width:200px;
+        }
+    </style>
+</head>
+<br>
+JWT测试
+<br>
+<br>
+<input type="button" id="isalive" value="联通性测试"></input>
+<br>
+<br>
+<input type="input" id="issur" value="Demo"></input>
+<input type="input" id="audience" value="test"></input>
+<input type="button" id="getToken" value="获取JWT-token"></input>
+<input type="button" id="refreshToken" value="刷新JWT-token"></input>
+<br>
+<textarea id= "tokensecret"  rows="8" cols="100"></textarea>
+<br>
+<input type="button" id="parseToken" value="翻译JWT-token"></input>
+<br>
+<textarea id= "tokenparse"  rows="1" cols="100"></textarea>
+</body>
+<script src="./jquery.min.js"></script>
+<script>
+
+    $('#isalive').bind("click",function(){
+        $.ajax(
+            {
+                url: "/api/auth/demo/isalive",
+                dataType:'json',
+                method:"get",
+                success:function(result){
+                    //alert(111);
+                    alert(result.data);
+                }
+            }
+        );
+    });
+
+
+    $('#getToken').bind("click",function(){
+        var issur = $('#issur').val();
+        var audience = $('#audience').val();
+        $.ajax(
+            {
+                url: "/api/auth/demo/getToken",
+                dataType:'json',
+                data:{issur:issur,audience:audience},
+                method:"get",
+                success:function(result){
+                   // $('#tokenparse').val(JSON.stringify(result));
+                    $('#tokensecret').val(result.data);
+                }
+            }
+        );
+    });
+
+    $('#refreshToken').bind("click",function(){
+        var var_tokensecret = $('#tokensecret').val();
+        $.ajax(
+            {
+                url: "/api/auth/demo/refreshToken",
+                dataType:'json',
+                data:{token:var_tokensecret},
+                method:"get",
+                success:function(result){
+                    $('#tokensecret').val(result.data);
+                }
+            }
+        );
+    });
+
+    $('#parseToken').bind("click",function(){
+        var var_tokensecret = $('#tokensecret').val();
+        $.ajax(
+            {
+                url: "/api/auth/demo/parseToken",
+                dataType:'json',
+                data:{token:var_tokensecret},
+                method:"get",
+                success:function(result){
+                    $('#tokenparse').val(result.data);
+                }
+            }
+        );
+    });
+
+</script>
+</html>

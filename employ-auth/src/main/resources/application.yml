@@ -1,0 +1,6 @@
+##这里可以在开发过程中临时增加配置，最终配置要读取配置中心##
+#JWT配置
+jwt:
+  header: Authorization
+  expiration: 7200000
+  secret: NDU0NTY4amhmc3NkeHp6eGNxdzIlMjFAJTIxQCUyM2ZmNQ==
