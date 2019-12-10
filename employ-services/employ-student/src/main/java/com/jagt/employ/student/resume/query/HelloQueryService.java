@@ -1,9 +1,9 @@
-package com.jagt.employ.user.hello.query;
+package com.jagt.employ.student.resume.query;
 
 import com.jagt.employ.common.cqrs.impl.QueryServiceImpl;
-import com.jagt.employ.user.hello.dto.HelloDTO;
-import com.jagt.employ.user.infra.model.Tables;
-import com.jagt.employ.user.infra.model.tables.Hello;
+import com.jagt.employ.student.resume.dto.HelloDTO;
+import com.jagt.employ.student.infra.model.Tables;
+import com.jagt.employ.student.infra.model.tables.Hello;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
