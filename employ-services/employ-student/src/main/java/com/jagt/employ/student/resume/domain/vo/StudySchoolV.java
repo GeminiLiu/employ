@@ -8,22 +8,26 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
- * @description: 详细地址值类
+ * @description: 学习学校信息
  * @author: gemini.liu
- * @create: 2019-12-10 18:02
+ * @create: 2019-12-11 12:34
  **/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-public class LocationV {
-    @Column
-    private String province;
-    @Column
-    private String city;
-    @Column
-    private String county;
-    @Column
-    private String address;
+public class StudySchoolV {
+
+    /**
+     * 学校编号
+     */
+    @Column(length=50)
+    private String schoolCode;
+
+    /**
+     * 学校名称
+     */
+    @Column(length=100)
+    private String schoolName;
 
 }

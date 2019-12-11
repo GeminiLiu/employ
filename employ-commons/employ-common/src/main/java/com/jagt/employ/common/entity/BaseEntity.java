@@ -34,4 +34,10 @@ public class BaseEntity implements Serializable {
 	@Column
 	@Version
 	private Long version;
+
+	/**
+	 * 数据状态:1=正常,0=删除
+	 */
+	@Column
+	private int status = 1;
 }
