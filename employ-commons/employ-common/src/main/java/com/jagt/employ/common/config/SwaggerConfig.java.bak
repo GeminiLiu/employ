@@ -1,5 +1,7 @@
-package com.jagt.employ.auth.jwt.config;
+package com.jagt.employ.common.config;
 
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -11,29 +13,47 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Swagger生成api文档
- * Created by wangfan on 2018-02-22 上午 11:29.
- */
+ * @description: Swagger生成api文档
+ * @author: gemini.liu
+ * @create: 2019-12-11 15:11
+ **/
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+    @Value("${api.title}")
+    private String title;
+    @Value("${api.description}")
+    private String description;
+    @Value("${api.termsOfServiceUrl}")
+    private String termsOfServiceUrl;
+    @Value("${api.contact}")
+    private String contact;
+    @Value("${api.version}")
+    private String version;
+
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName(version)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.jagt.employ.auth.jwt"))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build();
     }
 
+    /**
+     * api信息
+     * @return
+     */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("")
-                .description("")
-                .termsOfServiceUrl("")
-                .contact("")
-                .version("1.0")
+                .title(title)
+                .description(description)
+                .termsOfServiceUrl(termsOfServiceUrl)
+                .contact(contact)
+                .version(version)
                 .build();
     }
 }

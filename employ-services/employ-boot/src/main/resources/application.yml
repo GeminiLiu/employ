@@ -9,7 +9,7 @@ employ:
   test: EOMS
   #开启xss过滤
   filter:
-    css: true
+    xss: true
   #缓存配置
   cache:
     caffeine:
@@ -18,3 +18,48 @@ employ:
         maximumSize: 100
       - name: test
         expireAfterWrite: 200
+
+#swagger开关
+spring:
+  swagger:
+    enabled: true
+    title: 视面接口文档
+    description: 前后端开发参考文档
+    version: v1.0.0
+    license: shimianpower
+    licenseUrl: http://www.shimianpower.com
+    host: www.shimianpower.com
+    contact:
+      name: shimianpower
+      url: www.shimianpower.com
+      email: support@shimianpower.com
+    security:
+      filter-plugin: false
+      username: gemini
+      password: gemini
+    api-key:
+      key-name: token
+      validator-plugin: true
+    global-response-messages:
+      POST[0]:
+        code: 400
+        message: server response 400
+      POST[1]:
+        code: 404
+        message: server response 404
+  #  base-package: com.jagt.employ
+    #全局参数,比如Token之类的验证信息可以全局话配置
+  #  global-operation-parameters:
+  #        description: '票据信息'
+  #        modelRef: 'string'
+  #        name: 'token'
+  #        parameter-type: 'header'
+  #        required: true
+
+    groups:
+    #  auth-group:
+    #    base-package: com.jagt.employ.auth
+      student-group:
+        base-package: com.jagt.employ.student
+      user-group:
+        base-package: com.jagt.employ.user

@@ -5,7 +5,6 @@ import com.jagt.employ.common.entity.BaseTimeEntity;
 
 import javax.persistence.Column;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**

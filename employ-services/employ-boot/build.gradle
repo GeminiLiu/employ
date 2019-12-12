@@ -1,6 +1,6 @@
 apply from: '../common.gradle'
 dependencies {
-//    implementation project(':employ-services:employ-user')
+    implementation project(':employ-services:employ-user')
 //    implementation project(':employ-services:employ-enterprise')
 //    implementation project(':employ-services:employ-college')
     implementation project(':employ-services:employ-student')
