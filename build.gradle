@@ -24,7 +24,6 @@ configure(subprojects) { subproject ->
 		apply plugin: 'nu.studer.jooq'
 		apply plugin: 'maven-publish'
 
-		version = VERSION
 		group = GROUP
 		sourceCompatibility = 1.8
 		targetCompatibility = 1.8
@@ -46,6 +45,13 @@ configure(subprojects) { subproject ->
 			implementation fileTree(dir: 'src/libs', include: ['*.jar'])
 			jooqRuntime 'mysql:mysql-connector-java:'+VERSION_MYSQL
 		}
+
+		task copyJars(type: Copy) {
+			from 'build/libs'
+			into rootProject.projectDir.absolutePath+'/build/libs'
+		}
+		build.finalizedBy copyJars
+		copyJars.mustRunAfter build
 	}
 }
 
