@@ -26,7 +26,7 @@ PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib:$CLASSPATH
 
 JARFILE=$PROJEC_NAME".jar"
-HOME="/home/viewinter/project"
+HOME="/home/employ/project"
 DIR=$HOME"/"$PROJEC_NAME
 
 if [ ! -d $DIR/backup ];then
@@ -64,7 +64,7 @@ waitStart(){
   echo $1" find log ......."
   while [ -f $logName ]
     do
-      result=$(grep "Started ServiceApplication in" $logName)
+      result=$(grep -E "Started \w* in [1-9]*\.[1-9]* seconds" $logName)
       errorRes=$(grep "Caused by:" $logName)
       if [[ "$result" != "" ]]
       then

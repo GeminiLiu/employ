@@ -1,7 +1,7 @@
 server:
   port: 9090
   tomcat:
-    basedir: /employ/home/ms-tmp
+    basedir: /home/employ/ms-tmp
 
 spring:
   application:
