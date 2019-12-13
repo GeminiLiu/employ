@@ -34,7 +34,7 @@ spring:
       url: www.shimianpower.com
       email: support@shimianpower.com
     security:
-      filter-plugin: false
+      filter-plugin: true
       username: gemini
       password: gemini
     api-key:

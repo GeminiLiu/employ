@@ -48,7 +48,7 @@ public class StudentResumeWork extends BaseTimeEntity {
     /**
      * 工作描述
      */
-    @Column(length = 1000)
+    @Column(length = 3000)
     private String jobDescription;
 
     /**
